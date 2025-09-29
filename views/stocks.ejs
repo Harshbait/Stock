@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Stocks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h3>All Stocks</h3>
+        <form method="get" action="/stocks/new">
+            <button class="btn btn-success mb-3">Buy New Stock</button> 
+        </form>
+
+            <a href="/" class="btn btn-secondary mb-3">Home</a>
+
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-3">
+            <% for(let stock of allStocks) { %>
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= stock.name %></h5>
+                            <p class="card-text">&#8377; <%= stock.price.toLocaleString('en-IN') %> per unit</p>
+                            <p class="card-text">Quantity: <%= stock.quantity %></p>
+                            <a href="/stocks/<%= stock._id %>" class="btn btn-primary mb-2">View Details</a>
+
+                            <!-- Sell Form -->
+                            <form method="POST" action="/stocks/<%= stock._id %>?_method=DELETE" >
+                                <button class="btn btn-danger">Sell</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

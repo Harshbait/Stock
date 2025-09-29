@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <h3>Stock Details</h3>
+    <div class="card col-6 offset-3 show-card">
+        <div class="card-body">
+            <p class="card-text"> <b>
+                    <%= stoc.name %> <br>
+                </b>
+                <%= stoc.discription %> <br>
+                    &#8377; <%= stoc.price.toLocaleString('en-IN') %><br>
+            </p>
+        </div>
+    </div>
+
+    <!-- <div class="btns">
+        <a class="btn btn-dark mb-2 new-btn col-1 offset-3" href="/stocks/<%= stoc._id %>/edit">Edit</a>
+
+        <form method="post" action="/stocks/<%= stoc._id %>?_method=DELETE">
+            <button class="btn btn-dark mb-2  offset-5">Delete</button>
+        </form> -->
+
+    <!-- </div> -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
