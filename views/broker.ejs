@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Stock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h3>Broker Orders</h3>
+        <a href="/stocks" class="btn btn-success">Back to Portfolio</a>
+
+        <% if (orders.length > 0) { %>
+            <% orders.forEach(order => { %>
+                <% if(order.buyer) { %>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <p><strong><%= order.buyer.username %></strong> wants <%= order.quantity %> of <%= order.stockName %></p>
+
+                        <% if (order.status === "pending") { %>
+                            <form method="POST" action="/order/accept/<%= order._id %>">
+                                <button class="btn btn-primary">Accept</button>
+                            </form>
+                        <% } %>
+
+                    </div>
+                </div>
+                <% } %> <!-- closes if(order.buyer) -->
+            <% }) %>
+        <% } else { %>
+            <p>No pending orders.</p>
+        <% } %>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
